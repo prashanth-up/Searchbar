@@ -1,11 +1,20 @@
 let isEnabled = false;
 
 function handleKeydown(event) {
+    // Check if the focused element is an input field or a textarea
+    var focusedElement = document.activeElement;
+    var isTyping = focusedElement.tagName === 'INPUT' || focusedElement.tagName === 'TEXTAREA';
+
+    // If the user is typing in an input field or a textarea, do not override the key
+    if (isTyping) {
+        return;
+    }
+
     if (event.key === '/' && isEnabled) {
-        event.preventDefault();
+        event.preventDefault(); // Prevent the default action
         var searchBars = document.querySelectorAll('input[type="search"], input[type="text"]');
         if (searchBars.length > 0) {
-            searchBars[0].focus();
+            searchBars[0].focus(); // Focus on the first search bar found
         }
     }
 }
