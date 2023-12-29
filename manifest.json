@@ -1,0 +1,20 @@
+
+{
+    "manifest_version": 2,
+    "name": "SearchBar",
+    "version": "1.0",
+    "description": "Focus on the search bar in web pages by pressing the '/' key.",
+    "permissions": [
+        "activeTab",
+        "storage"
+    ],
+    "browser_action": {
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ]
+}
