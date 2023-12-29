@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Toggle Search Shortcut</title>
-    <style>
-        body {
-            width: 200px;
-            padding: 10px;
-        }
-    </style>
+    <title>SearchBar Settings</title>
+    <link rel="stylesheet" type="text/css" href="popup.css">
 </head>
 <body>
-    <label>
-        <input type="checkbox" id="toggleFeature"> Enable '/' Shortcut
-    </label>
-
+    <div class="container">
+        <h1>SearchBar Settings</h1>
+        <div class="toggle-container">
+            <label class="toggle-label">
+                Enable '/' Shortcut
+                <input type="checkbox" id="toggleFeature">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </div>
     <script src="popup.js"></script>
 </body>
 </html>

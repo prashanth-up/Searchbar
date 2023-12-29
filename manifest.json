@@ -1,13 +1,14 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "SearchBar",
     "version": "1.0",
     "description": "Focus on the search bar in web pages by pressing the '/' key.",
     "permissions": [
         "activeTab",
-        "storage"
+        "storage",
+        "scripting" 
     ],
-    "browser_action": {
+    "action": {
         "default_popup": "popup.html",
         "default_icon": {
             "16": "icons/icon16.png",
@@ -27,4 +28,3 @@
         "128": "icons/icon128.png"
     }
 }
-

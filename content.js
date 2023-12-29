@@ -1,33 +1,28 @@
-// Function to handle keydown events
+let isEnabled = false;
+
 function handleKeydown(event) {
-    if (event.key === '/') {
-        event.preventDefault(); // Prevent the default action
+    if (event.key === '/' && isEnabled) {
+        event.preventDefault();
         var searchBars = document.querySelectorAll('input[type="search"], input[type="text"]');
         if (searchBars.length > 0) {
-            searchBars[0].focus(); // Focus on the first search bar found
+            searchBars[0].focus();
         }
     }
 }
 
-// Check the stored setting and add or remove the event listener accordingly
-function checkSettingAndUpdateListener() {
+// Initialize and add event listener
+function init() {
+    document.addEventListener('keydown', handleKeydown);
     chrome.storage.sync.get('enableFeature', function(data) {
-        if (data.enableFeature) {
-            document.addEventListener('keydown', handleKeydown);
-        } else {
-            document.removeEventListener('keydown', handleKeydown);
-        }
+        isEnabled = data.enableFeature !== false;
     });
 }
 
-// Listen for changes in the stored settings
-chrome.storage.onChanged.addListener(function(changes, namespace) {
-    for (let key in changes) {
-        if (key === 'enableFeature') {
-            checkSettingAndUpdateListener();
-        }
+// Listen for changes from the popup
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.featureEnabled !== undefined) {
+        isEnabled = request.featureEnabled;
     }
 });
 
-// Initial check
-checkSettingAndUpdateListener();
+init();
