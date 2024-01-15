@@ -1,4 +1,4 @@
-# SearchBar Extension
+# SearchBar Extension [(Chrome Webstore Link)](https://chromewebstore.google.com/detail/searchbar/obkpcdbjpllljakmogbohgimhabdgdno)
 
 ## Description
 The SearchBar extension is a convenient tool that allows users to quickly focus on the search bar of any webpage by pressing the '/' key. This extension is designed to enhance browsing efficiency and improve user experience.
